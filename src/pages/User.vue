@@ -1,0 +1,105 @@
+<template>
+    <!-- Container Principal -->
+    <div id="main" class="container-fluid" style="margin-top: 50px">
+        <!-- Topo do container com 3 colunas -->
+        <div id="top" class="row">
+            <div class="col-md-3">
+                <h2>Usuários Cadastrados - </h2>
+            </div>
+            <!-- Form Busca -->
+            <div class="col-md-6">
+                <form action="" method="post">
+                    <div class="input-group h2">
+                        <input name="criterio" class="form-control" id="criterio" type="text" placeholder="Pesquisar Atletas" value="">
+                        <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                    <span class="glyphicon glyphicon-search">Buscar</span>
+                                </button>
+                            </span>
+                    </div>
+                </form>
+            </div>
+            <!-- Botão Novo -->
+            <div class="col-md-3">
+                <a href="" class="btn btn-primary pull-right h2">Novo Item</a>
+            </div>
+        </div> <!-- /#top -->
+        <hr />
+        <!-- Listagem dos itens do bd -->
+        <div id="list" class="row">
+            <div class="table-responsive col-md-12">
+                <table class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th class="actions">Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Listar dados do bd -->
+
+                    <tr v-for="(user, index) in users.data" :key="index">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td class="actions">
+                            <a class="btn btn-success btn-xs" href="">Visualizar</a>
+                            <a class="btn btn-warning btn-xs" href="">Editar</a>
+                            <form style="display: inline-block;" method="POST" action=""
+                                  data-toggle="tooltip" data-placement="top" title="Excluir" onsubmit="return confirm('Confirma exclusão?')">
+                                <button type="submit" class="btn btn-danger btn-xs">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- /#listagem -->
+    </div>  <!-- /#main -->
+</template>
+
+<script>
+import { mapActions, mapState } from 'vuex'
+
+export default {
+    name: "Users",
+
+    // created() {
+    //     if (this.name === '') {
+    //         return this.$router.push({name: 'login'})
+    //     }
+    // },
+
+    mounted() {
+        //this.$store.dispatch('getUsers')
+        this.getUsers()
+            .catch(response => {
+                this.$vToastify.error('Error to load Users')
+            })
+    },
+
+    computed: {
+        // users () {
+        //     return this.$store.state.users.items
+        // }
+        ...mapState({
+            users: state => state.users.items,
+            auth: state => state.auth.authenticated,
+            name: state => state.auth.me.name
+        })
+    },
+
+    methods: {
+        ...mapActions([
+            'getUsers'
+        ])
+    }
+}
+</script>
+
+<style scoped>
+
+</style>

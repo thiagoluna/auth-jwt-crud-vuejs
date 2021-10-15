@@ -1,0 +1,14 @@
+- Bootstrap
+npm install bootstrap jquery popper.js
+
+- Vue Router
+npm install vue-router
+
+-Vuex
+npm install vuex
+
+-Axios
+npm install axios
+
+- Toastify (alerts)
+npm install vue-toastify

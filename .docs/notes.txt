@@ -12,3 +12,6 @@ npm install axios
 
 - Toastify (alerts)
 npm install vue-toastify
+
+- Public Endpoint
+https://www.jsdelivr.com/github

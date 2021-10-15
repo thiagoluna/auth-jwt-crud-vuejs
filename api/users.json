@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Fulano da Silva",
+      "email": "fulano@emai.com"
+    },
+    {
+      "id": 2,
+      "name": "Ciclano da Silva",
+      "email": "ciclano@emai.com"
+    },
+    {
+      "id": 4,
+      "name": "Beltrano da Silva",
+      "email": "beltrano@emai.com"
+    }
+  ]
+}

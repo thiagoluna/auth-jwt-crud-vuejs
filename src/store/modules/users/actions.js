@@ -18,5 +18,17 @@ export default {
                     commit('SET_USER', response.data)
                 })
                 .finally(() => commit('SET_PRELOADER', false))
+    },
+
+    getFakeUsers ({commit}) {
+        commit('SET_PRELOADER', true )
+        commit('SET_TEXT_PRELOADER', 'Loading Users...' )
+
+        const token = localStorage.getItem(TOKEN_NAME)
+        return axios.get('https://cdn.jsdelivr.net/gh/thiagoluna/auth-jwt-crud-vuejs@master/api/users.json')
+            .then(response => {
+                commit('SET_USER', response.data)
+            })
+            .finally(() => commit('SET_PRELOADER', false))
     }
 }

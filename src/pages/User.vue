@@ -75,7 +75,7 @@ export default {
 
     mounted() {
         //this.$store.dispatch('getUsers')
-        this.getUsers()
+        this.getFakeUsers()
             .catch(response => {
                 this.$vToastify.error('Error to load Users')
             })
@@ -94,7 +94,7 @@ export default {
 
     methods: {
         ...mapActions([
-            'getUsers'
+            'getUsers', 'getFakeUsers'
         ])
     }
 }

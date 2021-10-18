@@ -46,11 +46,13 @@
                         <td>{{user.email}}</td>
                         <td class="actions">
                             <a class="btn btn-success btn-xs" href="">Visualizar</a>
-                            <a class="btn btn-warning btn-xs" href="">Editar</a>
-                            <form style="display: inline-block;" method="POST" action=""
+                            <a class="btn btn-warning btn-xs" href="#">Editar</a>
+                            <a class="btn btn-danger btn-xs" href="#" @click.prevent="confirmDelete(user)">Excluir</a>
+
+                            <!--<form style="display: inline-block;" method="POST" action=""
                                   data-toggle="tooltip" data-placement="top" title="Excluir" onsubmit="return confirm('Confirma exclusão?')">
                                 <button type="submit" class="btn btn-danger btn-xs">Excluir</button>
-                            </form>
+                            </form> -->
                         </td>
                     </tr>
 
@@ -75,7 +77,7 @@ export default {
 
     mounted() {
         //this.$store.dispatch('getUsers')
-        this.getFakeUsers()
+        this.getUsers()
             .catch(response => {
                 this.$vToastify.error('Error to load Users')
             })
@@ -94,8 +96,30 @@ export default {
 
     methods: {
         ...mapActions([
-            'getUsers', 'getFakeUsers'
-        ])
+            'getUsers', 'getFakeUsers', 'deleteUser'
+        ]),
+
+        confirmDelete(user) {
+            this.$vToastify.prompt({
+                body: 'Confirm Delete?',
+                answers: { Yes: true, No: false}
+            }).then(value => {
+                if (value) {
+                    this.delete(user.id)
+                }
+            })
+        },
+
+        delete(id) {
+            this.deleteUser(id)
+                .then(response => {
+                    this.$vToastify.success('Users Deleted!')
+                    this.getUsers()
+                })
+                .catch(response => {
+                    this.$vToastify.error('Error to delete Users')
+                })
+        }
     }
 }
 </script>

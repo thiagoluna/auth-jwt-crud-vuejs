@@ -30,5 +30,22 @@ export default {
                 commit('SET_USER', response.data)
             })
             .finally(() => commit('SET_PRELOADER', false))
+    },
+
+    deleteUser({commit}, id) {
+        commit('SET_PRELOADER', true )
+        commit('SET_TEXT_PRELOADER', 'Deleting Users...' )
+
+        const token = localStorage.getItem(TOKEN_NAME)
+        return axios.create({
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .delete('users/' + id)
+            .then(response => {
+                console.log(response.data)
+            })
+            .finally(() => commit('SET_PRELOADER', false))
     }
 }

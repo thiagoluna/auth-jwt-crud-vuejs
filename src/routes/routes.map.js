@@ -2,6 +2,7 @@ import Home from '../pages/Home'
 import User from '../pages/User'
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import PageNotFound from "../pages/PageNotFound";
 
 const routes = [
     {
@@ -17,9 +18,13 @@ const routes = [
         path: '/', component: () => import('../layout/DefaultTemplate'),
         children: [
             {path: '/home', component: Home, name: 'home', meta: {logged: true}},
-            {path: '/users', component: User, name: 'users', meta: {logged: true}}
+            {path: '/users', component: User, name: 'users'}
         ]
     },
+
+    {
+        path: '*', component: PageNotFound, name: '404'
+    }
 ]
 
 export default routes

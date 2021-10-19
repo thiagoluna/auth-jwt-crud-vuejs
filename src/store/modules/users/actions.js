@@ -32,6 +32,10 @@ export default {
             .finally(() => commit('SET_PRELOADER', false))
     },
 
+    addUser() {
+
+    },
+
     deleteUser({commit}, id) {
         commit('SET_PRELOADER', true )
         commit('SET_TEXT_PRELOADER', 'Deleting Users...' )

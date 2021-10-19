@@ -12,7 +12,7 @@ const router = new VueRouter({
 
 const token = localStorage.getItem(TOKEN_NAME)
 router.beforeEach((to, from, next) => {
-    if (to.meta.logged == true && !token) return next({ name: 'login' })
+    if (to.meta.logged === true && !token) return next({ name: 'login' })
     next()
 })
 

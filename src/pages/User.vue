@@ -21,7 +21,7 @@
             </div>
             <!-- Botão Novo -->
             <div class="col-md-3">
-                <a href="" class="btn btn-primary pull-right h2">Novo Item</a>
+                <router-link class="btn btn-primary pull-right h2" :to="{name: 'add.users'}">Add User</router-link>
             </div>
         </div> <!-- /#top -->
         <hr />

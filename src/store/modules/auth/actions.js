@@ -3,7 +3,11 @@ import { TOKEN_NAME } from "../../../config/api";
 
 export default {
     register ( { commit }, params) {
+        commit('SET_PRELOADER', true )
+        commit('SET_TEXT_PRELOADER', 'Loading Users...' )
+
         return axios.post('users', params)
+            .finally(() => commit('SET_PRELOADER', false))
     },
 
     login ( { commit, dispatch }, params) {

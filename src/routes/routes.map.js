@@ -3,6 +3,7 @@ import User from '../pages/User'
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import PageNotFound from "../pages/PageNotFound";
+import AddUser from "../pages/user/AddUser";
 
 const routes = [
     {
@@ -18,7 +19,8 @@ const routes = [
         path: '/', component: () => import('../layout/DefaultTemplate'),
         children: [
             {path: '/home', component: Home, name: 'home', meta: {logged: true}},
-            {path: '/users', component: User, name: 'users'}
+            {path: '/users', component: User, name: 'users', meta: {logged: true}},
+            {path: '/add-users', component: AddUser, name: 'add.users'}
         ]
     },
 

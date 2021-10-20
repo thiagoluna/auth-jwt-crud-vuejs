@@ -4,6 +4,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import PageNotFound from "../pages/PageNotFound";
 import AddUser from "../pages/user/AddUser";
+import EditUser from "../pages/user/EditUser";
 
 const routes = [
     {
@@ -20,7 +21,8 @@ const routes = [
         children: [
             {path: '/home', component: Home, name: 'home', meta: {logged: true}},
             {path: '/users', component: User, name: 'users', meta: {logged: true}},
-            {path: '/add-users', component: AddUser, name: 'add.users'}
+            {path: '/add-users', component: AddUser, name: 'add.users'},
+            {path: '/edit-users/:id', component: EditUser, name: 'edit.user', props: true},
         ]
     },
 

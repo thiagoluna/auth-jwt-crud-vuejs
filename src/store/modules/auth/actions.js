@@ -38,7 +38,7 @@ export default {
     getMe ( { commit }) {
         let token = localStorage.getItem(TOKEN_NAME)
         if (!token) return
-        console.log(token)
+        //console.log(token)
         return axios.create({
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -46,7 +46,7 @@ export default {
         })
             .post('me', {})
                 .then(response => {
-                    console.log(response.data)
+                    //console.log(response.data)
                     commit('SET_ME', response.data)
                 })
                 .catch(error => localStorage.removeItem(TOKEN_NAME))

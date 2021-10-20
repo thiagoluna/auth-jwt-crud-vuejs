@@ -45,14 +45,8 @@
                         <td>{{user.name}}</td>
                         <td>{{user.email}}</td>
                         <td class="actions">
-                            <a class="btn btn-success btn-xs" href="">Visualizar</a>
-                            <a class="btn btn-warning btn-xs" href="#">Editar</a>
-                            <a class="btn btn-danger btn-xs" href="#" @click.prevent="confirmDelete(user)">Excluir</a>
-
-                            <!--<form style="display: inline-block;" method="POST" action=""
-                                  data-toggle="tooltip" data-placement="top" title="Excluir" onsubmit="return confirm('Confirma exclusão?')">
-                                <button type="submit" class="btn btn-danger btn-xs">Excluir</button>
-                            </form> -->
+                            <router-link class="btn btn-warning btn-xs" :to="{name: 'edit.user', params: {id: user.id}}">Edit</router-link>
+                            <a class="btn btn-danger btn-xs" href="#" @click.prevent="confirmDelete(user)">Delete</a>
                         </td>
                     </tr>
 
@@ -68,12 +62,6 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
     name: "Users",
-
-    // created() {
-    //     if (this.name === '') {
-    //         return this.$router.push({name: 'login'})
-    //     }
-    // },
 
     mounted() {
         //this.$store.dispatch('getUsers')
